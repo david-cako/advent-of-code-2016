@@ -81,15 +81,15 @@ fn main() {
         Err(e) => panic!("could not read file: {}", e.description()),
         Ok(_) => f,
     };
-    let steps: Vec<&str> = s.split(',').collect();
-
+    let steps: Vec<&str> = s.split(',')
+                            .map(|x| x.trim())  // trim whitespace!
+                            .collect();
     for step in steps {
         let (direction, units) = step.split_at(1);
         let units: u32 = units.parse().unwrap();
-        println!("{}", direction);
-        println!("{}", units);
         turtle.move_turtle(direction, units);
     }
-    println!("position: {}{}", turtle.x, turtle.y);
+    println!("position: ({}, {})", turtle.x, turtle.y);
+    println!("distance from drop: {}", turtle.x + turtle.y);
 }
 

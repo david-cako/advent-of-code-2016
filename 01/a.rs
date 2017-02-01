@@ -33,7 +33,8 @@ impl Direction {
             1 => "East",
             2 => "South",
             3 => "West",
-        };
+            _ => panic!("not a valid direction!"),
+        }
     }
 }
 
@@ -52,36 +53,40 @@ impl Turtle {
         }
     }
     
-    fn move_turtle(&mut self, direction: String, units: u32) {
-        match direction.to_lowercase() {
-            r => self.direction += Direction{ direction: 1 },
-            l => self.direction -= Direction{ direction: 1 },
+    fn move_turtle(&mut self, direction: &str, units: u32) {
+        match direction.to_lowercase().as_str()  {
+            "r" => self.direction += Direction{ direction: 1 },
+            "l" => self.direction -= Direction{ direction: 1 },
+              _ => panic!("not a valid direction!"),
         };
         match self.direction.get() {
             "North" => self.y += units as i32,
             "East" => self.x += units as i32,
             "South" => self.y -= units as i32,
             "West" => self.x -= units as i32,
+                _ => panic!("not a valid direction!"),
         };
     }
 }
 
 fn main() {
     let mut s = String::new();
-    let turtle = Turtle::new();
+    let mut turtle = Turtle::new();
     let mut f = match File::open("instructions.txt") {
         Err(e) => panic!("open failed: {}", e.description()),
         Ok(file) => file,
     };
 
-    f.read_to_string(&mut s);
+    match f.read_to_string(&mut s) {
+        Err(e) => panic!("could not read file: {}", e.description()),
+        Ok(_) => f,
+    };
     let steps: Vec<&str> = s.split(',').collect();
 
     for step in steps {
-        let step = step.chars();
-        let direction: String = step.take(1).collect();
+        let (direction, units) = step.split_at(1);
+        let units: u32 = units.parse().unwrap();
         println!("{}", direction);
-        let units: u32 = step.take(2).unwrap();
         println!("{}", units);
         turtle.move_turtle(direction, units);
     }

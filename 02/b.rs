@@ -5,11 +5,11 @@ use std::error::Error;
 
 fn initialize_keypad<'a>() -> [Vec<&'a str>; 5] {
     let keypad_map = [
-                  vec!["1"],
-             vec!["2", "3", "4"],
-        vec!["5", "6", "7", "8", "9"],
-             vec!["A", "B", "C"],
-                  vec!["D"],
+    vec!["0", "0", "1", "0", "0"],
+    vec!["0", "2", "3", "4", "0"],
+    vec!["5", "6", "7", "8", "9"],
+    vec!["0", "A", "B", "C", "0"],
+    vec!["0", "0", "D", "0", "0"],
     ];
     keypad_map
 }
@@ -43,10 +43,10 @@ impl Turtle {
         };
         if y < self.keypad_map.len() as i8 && y >= 0 {
             if x < self.keypad_map[y as usize].len() as i8 && x >= 0 {
-                self.x = x;
-                self.y = y;
-            } else {
-                println!("passing: {}, {}, row len: {}", x, y, self.keypad_map[y as usize].len());
+                if self.keypad_map[y as usize][x as usize] != "0" {
+                    self.x = x;
+                    self.y = y;
+                }
             }
         }
     }

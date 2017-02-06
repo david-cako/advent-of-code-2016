@@ -15,7 +15,6 @@ fn main() {
                                          .collect();
             'sides: for _ in 0..3 {
                 let side = triangle.remove(0);
-                println!("{} {}", triangle[0], triangle[1]);
                 if triangle[0] + triangle[1] > side {
                     triangle.push(side);
                     continue 'sides;

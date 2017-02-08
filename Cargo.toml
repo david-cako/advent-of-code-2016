@@ -1,0 +1,11 @@
+[package]
+name = "advent-of-code-2016"
+version = "0.1.0"
+authors = ["David Cako <dc@cako.io>"]
+
+[[bin]]
+name= "day05"
+path="src/bin/05/a.rs"
+
+[dependencies]
+rust-crypto = "*"

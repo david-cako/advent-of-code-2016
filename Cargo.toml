@@ -4,7 +4,39 @@ version = "0.1.0"
 authors = ["David Cako <dc@cako.io>"]
 
 [[bin]]
-name= "day05"
+name= "day01_a"
+path="src/bin/01/a.rs"
+
+[[bin]]
+name= "day01_b"
+path="src/bin/01/b.rs"
+
+[[bin]]
+name= "day02_a"
+path="src/bin/02/a.rs"
+
+[[bin]]
+name= "day02_b"
+path="src/bin/02/b.rs"
+
+[[bin]]
+name= "day03_a"
+path="src/bin/03/a.rs"
+
+[[bin]]
+name= "day03_b"
+path="src/bin/03/b.rs"
+
+[[bin]]
+name= "day04_a"
+path="src/bin/04/a.rs"
+
+[[bin]]
+name= "day04_b"
+path="src/bin/04/b.rs"
+
+[[bin]]
+name= "day05_a"
 path="src/bin/05/a.rs"
 
 [dependencies]

@@ -9,7 +9,7 @@ fn main() {
     for line in reader.lines() {
         let line: String = line.unwrap();
         if !line.is_empty() {
-            for let Some((i, character)) in line.chars().enumerate() {
+            for character in line.chars() {
             
             }
         }

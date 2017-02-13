@@ -13,10 +13,19 @@ fn check_hash(input: &str, md5: &mut Md5) -> Option<(usize, char)> {
 
         let mut characters = result.chars();
         if result.starts_with("00000") {
-            let pos: u8 = characters.nth(5).unwrap().to_string().parse().unwrap();
-            return Some((pos as usize, characters.next().unwrap()));
+            let pos = characters.nth(5).unwrap().to_string().parse::<u8>();
+            match pos {
+                Ok(val) => {
+                    if val < 8 {
+                        Some((val as usize, characters.next().unwrap()))
+                    } else {
+                        None
+                    }
+                },
+                Err(_) => None
+            }
         } else {
-            return None;
+            None
         }
 }
 
@@ -30,8 +39,10 @@ fn main() {
     loop {
         let input = INPUT.to_string() + iter.to_string().as_str();
         if let Some((pos, character)) = check_hash(input.as_str(), &mut md5) {
-            password[pos] = character;
-            inserted[pos] = true;
+            if inserted[pos] == false {
+                password[pos] = character;
+                inserted[pos] = true;
+            }
         }
         iter += 1;
         if inserted.iter().filter(|&&x| x == true).count() == 8 {

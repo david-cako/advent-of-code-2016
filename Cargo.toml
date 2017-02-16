@@ -3,6 +3,13 @@ name = "advent-of-code-2016"
 version = "0.1.0"
 authors = ["David Cako <dc@cako.io>"]
 
+[dependencies]
+rust-crypto = "*"
+
+[[bin]]
+name="create_day"
+path="src/bin/create_day.rs"
+
 [[bin]]
 name= "day01_a"
 path="src/bin/01/a.rs"
@@ -47,5 +54,11 @@ path="src/bin/05/b.rs"
 name="day06_a"
 path="src/bin/06/a.rs"
 
-[dependencies]
-rust-crypto = "*"
+[[bin]]
+name="day07_a"
+path="src/bin/07/a.rs"
+
+[[bin]]
+name="day07_b"
+path="src/bin/07/b.rs"
+

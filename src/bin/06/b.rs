@@ -24,9 +24,9 @@ fn main() {
             let counter = char_counter.entry(character).or_insert(0);
             *counter += 1;
         }
-        let mut largest: (char, u16) = ('0', 0);
+        let mut largest: (char, u16) = ('0', 9999);
         for (character, val) in char_counter.iter() {
-            if *val > largest.1 {
+            if *val < largest.1 {
                 largest = (**character, *val);
             }
         }

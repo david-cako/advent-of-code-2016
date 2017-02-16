@@ -7,5 +7,5 @@ day creation script creates boilerplate files and adds them to Cargo.toml:
 
     cargo run --bin create_day
 
-must be invoked from numbered day directory such as `advent-of-code-2016/src/bin/02`.
+must be invoked from numbered day directory such as `.../advent-of-code-2016/src/bin/02`.
 

@@ -43,5 +43,9 @@ path="src/bin/05/a.rs"
 name="day05_b"
 path="src/bin/05/b.rs"
 
+[[bin]]
+name="day06_a"
+path="src/bin/06/a.rs"
+
 [dependencies]
 rust-crypto = "*"

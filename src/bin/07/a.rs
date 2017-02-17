@@ -9,6 +9,7 @@ fn main() {
     for line in reader.lines() {
         let line: String = line.unwrap();
         if !line.is_empty() {
+            let ip: Vec<&str> = line.split(|x| x == '[' || |x| x == ']').collect();
             for character in line.chars() {
             
             }

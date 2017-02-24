@@ -51,19 +51,21 @@ fn main() {
 
             threads.push(thread::spawn(move || {
                 let mut md5 = *md5.lock().unwrap();
-
-                check_hash(input.as_str(), &mut md5).unwrap()
+                check_hash(input.as_str(), &mut md5)
             }));
 
             iter += 1;
         }
         
         for thread in threads.into_iter() {
-            let (pos, character) = thread.join().unwrap();
-            
-            if inserted[pos] == false {
-                password[pos] = character;
-                inserted[pos] = true;
+            let thread = thread.join();
+            println!("{}", iter);
+            if let Some((pos, character)) = thread.unwrap() {
+                if inserted[pos] == false {
+                    password[pos] = character;
+                    inserted[pos] = true;
+                    println!("{:?}", password);
+                }
             }
         }
 

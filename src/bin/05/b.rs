@@ -45,6 +45,7 @@ fn main() {
             }
         }
         iter += 1;
+        
         if inserted.iter().filter(|&&x| x == true).count() == 8 {
             println!("password: {}", password.iter().cloned().collect::<String>());
             break;

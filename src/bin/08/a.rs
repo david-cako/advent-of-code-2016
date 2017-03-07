@@ -87,11 +87,13 @@ fn main() {
             let instruction: Instruction = match tokens[0] {
                 "rotate" => match tokens[1] {
                     "row" => Instruction::Rotate {
-                        target: Target::Row(tokens[2].split('=').last().unwrap().parse::<usize>().unwrap()),
+                        target: Target::Row(tokens[2].split('=').last()
+                                        .unwrap().parse::<usize>().unwrap()),
                         value: tokens[4].parse().unwrap()
                     },
                     "column" => Instruction::Rotate {
-                        target: Target::Column(tokens[2].split('=').last().unwrap().parse::<usize>().unwrap()),
+                        target: Target::Column(tokens[2].split('=').last()
+                                        .unwrap().parse::<usize>().unwrap()),
                         value: tokens[4].parse().unwrap()
                     },
                     &_ => panic!("invalid token: {}", tokens[1])

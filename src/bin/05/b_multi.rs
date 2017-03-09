@@ -44,7 +44,7 @@ fn main() {
     }
 
     loop {
-        let mut threads: Vec<thread::JoinHandle<_>> = Vec::new();
+        let mut threads = vec![];
         for i in 0..THREAD_COUNT {
             let mut md5 = md5_vec[i];
 
